@@ -37,7 +37,7 @@ public class Controller {
     @GetMapping("api/developers/grades")
     public String userGrades(@AuthenticationPrincipal OidcUser user) {
         return "Welcome, "+ user.getFullName() + "!";
-    }p
+    }
 
     @GetMapping("api/developers/{email}")
     public String getUserByEmail(@PathVariable String email, @AuthenticationPrincipal OidcUser user) {
