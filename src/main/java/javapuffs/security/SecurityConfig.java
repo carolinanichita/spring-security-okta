@@ -14,10 +14,11 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class SecurityConfig {
     @Bean
-    DefaultSecurityFilterChain defaultChain(HttpSecurity http) throws Exception {
+    DefaultSecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth ->
                 auth.requestMatchers("/api/courses").permitAll()
                         .requestMatchers("/api/developers/labs").authenticated()
-                        .requestMatchers("/api/developers/grades").hasAnyAuthority("instructors")).oauth2Login(withDefaults()).cors(withDefaults()).oauth2ResourceServer(it -> it.jwt(withDefaults())).build();
+                        .requestMatchers("/api/developers/grades").hasAnyAuthority("instructors")
+                        .requestMatchers("api/developers/{email}").authenticated()).oauth2Login(withDefaults()).cors(withDefaults()).oauth2ResourceServer(it -> it.jwt(withDefaults())).build();
     }
 }
