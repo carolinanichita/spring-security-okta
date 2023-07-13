@@ -7,4 +7,4 @@ okta:
     client-id: ${CLIENT_ID}
     client-secret: ${CLIENT_SECRET}
     scope: openid,email,profile
-    groupsClaim: grp
+    groupsClaim: groups
